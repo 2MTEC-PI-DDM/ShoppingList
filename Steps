@@ -1,0 +1,18 @@
+CONFIG GIT:
+git config --global user.name laislobato
+gir config --global user.email 
+
+Criar projeto:
+npx create-expo-app@latest SilvinhaHealthApp --template blank
+
+INICIAR O PROJETO:
+cd ShoppingList
+npx expo start --localhost --android
+
+Instalar pacote Web
+npx expo install react-dom react-native-web @expo/metro-runtime
+
+INSTALL EXPO-ROUTER: 
+npx expo install expo-router react-native-safe-area-context react-native-screens expo-linking expo-constants expo-status-bar
+(https://docs.expo.dev/router/installation/) - obs: nao vaos usar o babel
+
