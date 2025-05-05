@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
-        "scheme": "your-app-scheme",
+    "scheme": "serafim-shopping-list-scheme",
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
@@ -26,7 +26,6 @@
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
-    
     "plugins": [
       "expo-router"
     ]
