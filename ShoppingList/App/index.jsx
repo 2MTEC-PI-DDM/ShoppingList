@@ -15,7 +15,7 @@ export default function App() {
         <Text style={styles.title}> Shopping List </Text>
         <Text style={styles.text}>
           Monte sua lista de compras e não esqueça mais o que
-          precisa comprar ao sair de casa!!!
+          precisa comprar ao sair de casa.
         </Text>
         <Link style={styles.button} href={"/home"}>
         <Text style={styles.buttonText}>ENTRAR</Text>
