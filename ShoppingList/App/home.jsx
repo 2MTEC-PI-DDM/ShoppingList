@@ -1,14 +1,30 @@
-import React from 'react'
-import { StyleSheet, Text, View, SafeAreaView, ImageBackground, TextInput, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
+import { StyleSheet, Text, View, SafeAreaView, ImageBackground, TextInput, TouchableOpacity, Alert, FlatList } from 'react-native'
 import {Ionicons} from '@expo/vector-icons'
 
-
 export default function Home() {
+  const [ constTextInput, setTextInput ] = useState('');
+  const [ items, setItems ] = useState([]);
+
+  const addItem = () => {
+    if (constTextInput == '') {
+      Alert.alert(
+        'Ocorreu um problema :(',
+        'Por favor, informe o nome do produto'
+      )
+    } else {
+      const newItem = {
+        id: Date.now().toString(),
+        name: constTextInput,
+        bought: false
+      }
+      setItems([...items, newItem]);
+      setTextInput('');
+    }
+  }
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
-
-
-
       <ImageBackground         
         source={require('../assets/background.jpeg')}
         style={{ flex: 1, justifyContent: 'flex-start' }}
@@ -19,7 +35,16 @@ export default function Home() {
           <Ionicons name="trash" size={32} color='#fff'/>
         </View>
 
-        <View style={{ flex: 1 }}></View>
+        <FlatList 
+          contentContainerStyle={{ padding: 20, paddingBottom: 100, color: '#fff' }}
+          data={items}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({item}) =>
+            <Text style={{ color: '#fff', fontSize: 20 }}>
+              {item.name}
+            </Text>
+          }
+        />
 
         <View style={styles.footer}>
             <View style={styles.inputContainer}>
@@ -28,10 +53,12 @@ export default function Home() {
               fontsize={18}
               placeholderTextColor="#aeaeae"
               placeholder='Digite o nome do produto....'
+              value={constTextInput}
+              onChangeText={(text) => setTextInput(text)}
               />
             </View>
-            <TouchableOpacity style={styles.iconContainer}>
-              <Ionicons name="name" size={36} color="#fff" />
+            <TouchableOpacity style={styles.iconContainer} onPress={addItem}>
+              <Ionicons name="add" size={36} color="#fff" />
             </TouchableOpacity>
         </View>
 
