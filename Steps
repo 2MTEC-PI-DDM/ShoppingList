@@ -1,6 +1,6 @@
 CONFIG GIT:
 git config --global user.name laislobato
-gir config --global user.email 
+git config --global user.email 
 
 Criar projeto:
 npx create-expo-app@latest SilvinhaHealthApp --template blank
