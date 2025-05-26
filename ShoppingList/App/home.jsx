@@ -1,64 +1,118 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, SafeAreaView, ImageBackground, TextInput, TouchableOpacity, Alert, FlatList } from 'react-native'
-import {Ionicons} from '@expo/vector-icons'
+import { Alert, FlatList, ImageBackground, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Ionicons } from '@expo/vector-icons';
 import ItemList from '../components/ItemList';
 
 export default function Home() {
-  const [ constTextInput, setTextInput ] = useState('');
-  const [ items, setItems ] = useState([]);
+  const [textInput, setTextInput] = useState('');
+  const [items, setItems] = useState([]);
 
   const addItem = () => {
-    if (constTextInput == '') {
+    if (textInput == '') {
       Alert.alert(
         'Ocorreu um problema :(',
         'Por favor, informe o nome do produto'
-      )
+      );
     } else {
       const newItem = {
         id: Date.now().toString(),
-        name: constTextInput,
+        name: textInput,
         bought: false
       }
       setItems([...items, newItem]);
       setTextInput('');
     }
-  }
+  } 
+      const markItemBougth= itemId => {
+        const newItems = items.map((item) => {
+          if (item.id == itemId) {
+            return{...item, bought: true }
 
+          }
+          return item;
+        });
+        setItems(newItems);
+      }
+      const unmarkItemBougth= itemId => {
+        const newItems = items.map((item) => {
+          if (item.id == itemId) {
+            return{...item, bought: false }
+            
+          }
+          return item;
+        });
+        setItems(newItems);
+      }
+      const removeItem = itemId => {
+        Alert.alert(
+          'Excluir Produto?', 'Confirma a exclusão deste produto?',
+          [
+            {
+              text:"Sim", onPress: () => {
+                const newItems = items.filter( item => item.id != itemId);
+                setItems(newItems);
+              }
+            },
+            {
+              text:'Cancerlar', style: 'cancel'
+            }
+          ]
+
+        );
+      }
+      const removeAll = () => {
+Alert.alert(
+  'Limpar Lista?', 'Confirma a exclusão de todos os produtos?',
+  [
+    {
+      text:'Sim',
+      onPress:() => {setItems([])}
+    },
+    {
+      text: "Cancelar", style: "cancel"
+    }
+  ]
+)
+      }
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ImageBackground         
+      <ImageBackground
         source={require('../assets/background.jpeg')}
         style={{ flex: 1, justifyContent: 'flex-start' }}
-        resizeMode='repeat'>
-
+        resizeMode='repeat'
+      >
         <View style={styles.header}>
           <Text style={styles.title}>Lista de Produtos</Text>
-          <Ionicons name="trash" size={32} color='#fff'/>
+          <Ionicons name="trash" size={32} color="#fff"  onPress={removeAll}/>
         </View>
 
-        <FlatList 
+        <FlatList
           contentContainerStyle={{ padding: 20, paddingBottom: 100, color: '#fff' }}
           data={items}
           keyExtractor={(item) => item.id.toString()}
-          renderItem={({item}) =>
-            <ItemList item={item}></ItemList>
+          renderItem={({ item }) => 
+            <ItemList item={item}
+          markItem={markItemBougth}
+          unmarkItem={unmarkItemBougth}
+          removeItem={removeItem}
+            />
           }
         />
 
         <View style={styles.footer}>
-            <View style={styles.inputContainer}>
-              <TextInput 
+          <View style={styles.inputContainer}>
+            <TextInput 
               color="#fff"
-              fontsize={18}
+              fontSize={18}
               placeholderTextColor="#aeaeae"
-              placeholder='Digite o nome do produto....'
-              value={constTextInput}
+              placeholder='Digite o nome do produto...'
+              value={textInput}
               onChangeText={(text) => setTextInput(text)}
-              />
-            </View>
-            <TouchableOpacity style={styles.iconContainer} onPress={addItem}>
-              <Ionicons name="add" size={36} color="#fff" />
-            </TouchableOpacity>
+            />
+          </View>
+          <TouchableOpacity style={styles.iconContainer} onPress={addItem}>
+            <Ionicons name="add" size={36} color="#fff" />
+          </TouchableOpacity>
         </View>
 
       </ImageBackground>
@@ -68,21 +122,19 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   header: {
-    paddingBottom: 20,
-    paddingRight: 30,
-    paddingLeft: 30,
-    paddingTop: 20,
+    padding: 25,
+    paddingTop: 50,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#000000',
+    backgroundColor: '#000000c0',
     borderBottomRightRadius: 30,
-    borderBottomLeftRadius: 30,
+    borderBottomLeftRadius: 30
   },
   title: {
-    fontSize: 22,
+    fontSize: 26,
     fontWeight: 'bold',
-    color:'#fff'
+    color: '#fff'
   },
   footer: {
     backgroundColor: '#000000c0',
@@ -97,7 +149,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: "#000",
     height: 50,
     marginVertical: 20,
     borderRadius: 30,
@@ -110,7 +162,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
     borderRadius: 25,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   }
-
 })

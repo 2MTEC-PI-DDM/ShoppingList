@@ -2,23 +2,23 @@ import { Link } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
-export default function App() {
+export default function Welcome() {
   return (
     <View style={styles.container}>
       <View style={styles.containerImage}>
-        <Image 
-        source={require('../assets/avatar.png')}
-        style={styles.avatar}
-        />        
+        <Image
+          source={require('../assets/avatar.png')}
+          style={styles.avatar}
+        />
       </View>
       <View style={styles.content}>
-        <Text style={styles.title}> Shopping List </Text>
+        <Text style={styles.title}>Shopping List</Text>
         <Text style={styles.text}>
           Monte sua lista de compras e não esqueça mais o que
-          precisa comprar ao sair de casa.
+          precisa comprar ao sair de casa!!!
         </Text>
         <Link style={styles.button} href={"/home"}>
-        <Text style={styles.buttonText}>ENTRAR</Text>
+          <Text style={styles.buttonText}>Acessar</Text>
         </Link>
       </View>
       <StatusBar style="light" backgroundColor='#000' />
@@ -76,4 +76,5 @@ buttonText: {
   color: '#fff',
   fontWeight: 'bold',
 },
-});
+
+  });
