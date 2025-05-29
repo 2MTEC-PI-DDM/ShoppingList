@@ -18,7 +18,7 @@ export default function Home() {
   const getItemsFromDevice = async () => {
     try {
       const itemsMemory = await AsyncStorage.getItem('shoppingList');
-      if (items != null)
+      if (itemsMemory != null)
         setItems(JSON.parse(itemsMemory))
     } catch (error) {
       console.log(`Erro: ${error}`)
