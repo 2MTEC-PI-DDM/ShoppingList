@@ -15,3 +15,5 @@ npx expo install react-dom react-native-web @expo/metro-runtime
 INSTALL EXPO-ROUTER: (INSTALAR TODA VEZ!!!!!!!!!!!!!!!!!)
 npx expo install expo-router react-native-safe-area-context react-native-screens expo-linking expo-constants expo-status-bar
 (https://docs.expo.dev/router/installation/) - obs: nao vaos usar o babel
+
+npm i @react-native-async-storage/async-storage
