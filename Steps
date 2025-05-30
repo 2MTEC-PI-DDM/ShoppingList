@@ -17,3 +17,4 @@ npx expo install expo-router react-native-safe-area-context react-native-screens
 (https://docs.expo.dev/router/installation/) - obs: nao vaos usar o babel
 
 npm i @react-native-async-storage/async-storage
+
