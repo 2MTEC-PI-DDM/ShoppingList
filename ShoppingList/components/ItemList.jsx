@@ -31,10 +31,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#000000c0',
     padding: 15,
-    borderRadius: 7,
+    borderRadius: 50,
     borderColor: 'white',
     borderWidth: 2,
-    marginVertical: 5,
+    marginVertical: 8,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'
@@ -43,19 +43,21 @@ const styles = StyleSheet.create({
     flex: 1,
     color: '#fff',
     fontSize: 24,
-    textDecorationLine: 'none'
+    textDecorationLine: 'none',
+    paddingLeft: 12,
   },
   itemBought: {
     flex: 1,
     color: '#fff',
     fontSize: 24,
     textDecorationLine: 'none',
-    textDecorationLine: 'line-through'
+    textDecorationLine: 'line-through',
+    paddingLeft: 12,
   },
   actionIcon: {
     height: 40,
     width: 40,
-    borderRadius: 20,
+    borderRadius: 50,
     backgroundColor: 'darkgreen',
     justifyContent: 'center',
     alignItems: 'center',

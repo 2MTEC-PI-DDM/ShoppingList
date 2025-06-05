@@ -20,6 +20,10 @@ export default function Welcome() {
         <Link style={styles.button} href={"/home"}>
           <Text style={styles.buttonText}>Acessar</Text>
         </Link>
+
+        <Text style={styles.creditos}>
+          Feito por Amanda e Lais do 2mtec
+        </Text>
       </View>
       <StatusBar style="light" backgroundColor='#000' />
     </View>
@@ -32,7 +36,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
   },
   containerImage: {
-    flex: 1.9,
+    flex: 1.5,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -45,26 +49,39 @@ avatar: {
 content: {
   flex: 1,
   backgroundColor: '#dadada',
-  borderTopRightRadius: 35,
-  borderTopLeftRadius: 35,
+  borderTopRightRadius: 50,
+  borderTopLeftRadius: 50,
   paddingHorizontal: '5%'
 },
 title: {
-  fontSize: 30,
+  fontSize: 32,
   fontWeight: 'bold',
-  marginTop: 20,
+  marginTop: 30,
   marginBottom: 10,
   textAlign: 'center',
 },
 text: {
+  alignSelf: 'center',
   fontSize: 16,
+  marginTop: 5,
+  width: '95%',
   color: 'grey',
   textAlign: 'center',
 },
+creditos: {
+  fotSize: 10,
+  position: 'absolute',
+  bottom: '2%',
+  alignSelf: 'center',
+  borderRadius: 50,
+  paddingVertical: 14,
+  textAlign: 'center',
+},
+
 button: {
   position: 'absolute',
   backgroundColor: '#000',
-  bottom: '10%',
+  bottom: '18%',
   alignSelf: 'center',
   borderRadius: 50,
   paddingVertical: 14,

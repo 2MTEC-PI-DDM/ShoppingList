@@ -75,13 +75,13 @@ export default function Home() {
           'Excluir Produto?', 'Confirma a exclusão deste produto?',
           [
             {
-              text:"Sim", onPress: () => {
+              text:"Sim D:", onPress: () => {
                 const newItems = items.filter( item => item.id != itemId);
                 setItems(newItems);
               }
             },
             {
-              text:'Cancerlar', style: 'cancel'
+              text:'Cancelar :D', style: 'cancel'
             }
           ]
 
@@ -104,7 +104,7 @@ Alert.alert(
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ImageBackground
-        source={require('../assets/background.jpeg')}
+        source={require('../assets/background.jpg')}
         style={{ flex: 1, justifyContent: 'flex-start' }}
         resizeMode='repeat'
       >
@@ -150,7 +150,7 @@ Alert.alert(
 const styles = StyleSheet.create({
   header: {
     padding: 25,
-    paddingTop: 50,
+    paddingTop: 30,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -160,6 +160,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 26,
+    paddingLeft: 5,
     fontWeight: 'bold',
     color: '#fff'
   },
@@ -179,7 +180,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
     height: 50,
     marginVertical: 20,
-    borderRadius: 30,
+    borderRadius: 20,
     paddingHorizontal: 20,
     justifyContent: 'center',
   },
@@ -187,7 +188,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     backgroundColor: '#000',
-    borderRadius: 25,
+    borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center'
   }
